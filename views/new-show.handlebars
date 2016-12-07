@@ -1,0 +1,50 @@
+<form action="/shows/add" enctype="multipart/form-data"  method="post">
+    <div class="form-group">
+        <label for="show_name">Show/Movie Name:</label>
+        <input type="text" name="show_name" id="show_name" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="year_released">Year Released:</label>
+        <input type="number" name="year_released" min="1960" max="2016"id="show_name" class="form-control">
+    </div>
+<label for="genre">Genre:</label>
+    <div class="btn-group form-group" data-toggle="buttons">
+        <label class="btn btn-primary">
+            <input type="checkbox" autocomplete="off" name="genre" value="horror"> Horror
+        </label>
+        <label class="btn btn-primary">
+            <input type="checkbox" autocomplete="off" name="genre" value="comedy"> Comedy
+        </label>
+        <label class="btn btn-primary">
+            <input type="checkbox" autocomplete="off" name="genre" value="indie"> Indie
+        </label>
+        <label class="btn btn-primary">
+            <input type="checkbox" autocomplete="off" name="genre" value="action"> Action
+        </label>
+        <label class="btn btn-primary">
+            <input type="checkbox" autocomplete="off" name="genre" value="mystery"> Mystery
+        </label>
+        <label class="btn btn-primary">
+            <input type="checkbox" autocomplete="off" name="genre" value="sci-fi"> Sci-fi
+        </label>
+        <label class="btn btn-primary">
+            <input type="checkbox" autocomplete="off" name="genre" value="romance"> Romance
+        </label>
+        <label class="btn btn-primary">
+            <input type="checkbox" autocomplete="off" name="genre" value="documentary"> Documentary
+        </label>
+        <label class="btn btn-primary">
+            <input type="checkbox" autocomplete="off" name="genre" value="drama"> Drama
+        </label>
+</div>
+    <div class="form-group">
+        <label for="description">Brief Description (About a paragraph):</label>
+        <textarea type="text" name="description" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        Image:
+        <input id="image" type="file" name="image" accepts="image/*">
+    </div>
+    <input type="submit">
+</form>
+

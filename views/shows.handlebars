@@ -1,0 +1,44 @@
+<div class="container" id="buttons">
+        <!-- Button trigger modal (Template from Bootstrap)-->
+    <button data-toggle="modal" data-target="#myModal"><b>Need Help Filtering?</b></button>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Searching with the Query String </h4>
+      </div>
+      <div class="modal-body">
+          <p align="left">To filter through the shows based on genre, you can use something called the query string. By typing in hhttp://ec2-54-227-90-50.compute-1.amazonaws.com:8888/shows?genre=comedy&genre=drama as the URL, you will see shows that are BOTH comedy and drama, while http://ec2-54-227-90-50.compute-1.amazonaws.com:8888/shows?genre=comedy&drama gets shows that are either comedy, or drama, or both. Try it out now with different genres!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="filter" data-filter=".comedy">Comedy</button>
+<button class="filter" data-filter=".drama">Drama</button>
+<button class="filter" data-filter=".indie">Indie</button>
+<button class="filter" data-filter=".action">Action</button>
+<button class="filter" data-filter=".mystery">Mystery</button>
+<button class="filter" data-filter=".sci-fi">Sci-Fi</button>
+<button class="filter" data-filter=".romance">Romance</button>
+<button class="filter" data-filter=".documentary">Documentary</button>
+<button class="filter" data-filter=".horror">Horror</button>
+</div>
+<div id="Container">
+{{#each shows}}
+<a href="shows/{{slug}}"><div class="show col-md-4 mix {{genre}}" data-myorder="{{genre}}">
+        {{#if imageFilename}}
+        <img src="/uploads/{{imageFilename}}" width="270px" height="400px">
+        {{/if}}
+    <p class="imageDescription">
+        {{genre}}
+    </p>
+    </div></a>   
+{{/each}}
+</div>
+
+<a href="#top" id="topbutton">back to top</a>

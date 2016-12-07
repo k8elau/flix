@@ -1,0 +1,17 @@
+<a href="../shows">Back</a>
+{{#each shows}}
+    <div id="wrapper">
+    <div id="show_slug" class="col-md-4">
+        <h1 id="showname">{{show_name}} ({{year_released}})</h1>
+        {{#if imageFilename}}
+            <img src="/uploads/{{imageFilename}}" width="100%" height="100%">
+        {{/if}}
+   </div>  
+    <div id="description" class="col-md-8">
+        <h1>DESCRIPTION:</h1>
+        {{description}}
+    </div>
+</div>
+{{/each}}
+
+

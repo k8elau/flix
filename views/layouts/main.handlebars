@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Netflix Recs</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Hind|Lato" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/main.css">
+	<!-- what's the difference between NAME AND ID -->
+   <!-- <input type="number" name="year_released" min="1950" max="2016" id="show_name"> -->
+</head>
+
+<body>
+    <a name="top"></a>
+    <a href="../shows"><img src="/img/logo.png" alt="LOGO" id="logo"></a>
+    <a href="../shows/add"><button id="submit">SUBMIT YOUR OWN</button></a>
+    <a href="../shows/sign-up"><button id="signup">Signup</button></a>
+    <a href="../shows/login"><button id="login">Login</button></a>
+  <div class="container">
+    {{{body}}}
+  </div>
+    <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        $('#Container').mixItUp();
+    });
+</script>
+
+</body>
+</html>
