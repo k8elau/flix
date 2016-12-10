@@ -3,8 +3,6 @@ list of things to do
     
 - for the future:
 - FIGURE OUT WHY MIXITUP DOESN'T WORK 
-- what do when the show already EXISTS? 
-- uploading image on AWS doesn't show up on localhost
 */
 
 // order of doing things (installing stuff on node)
@@ -40,9 +38,6 @@ app.set('port', portNum);
 // tell express to use handlebars
 app.engine('handlebars', hbs({defaultLayout: 'main'}) );
 app.set('view engine', 'handlebars');
-
-// parse application/x-www-form-urlencoded (allows us to access form data)
-//app.use(bodyParser.urlencoded({ extended: false }));
 
 //http://stackoverflow.com/questions/35668409/node-js-post-request-for-input-array
 //made it true because of that stackoverflow answer (genre array input)

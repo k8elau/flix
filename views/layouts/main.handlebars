@@ -21,8 +21,12 @@
     <a name="top"></a>
     <a href="../shows"><img src="/img/logo.png" alt="LOGO" id="logo"></a>
     <a href="../shows/add"><button id="submit">SUBMIT YOUR OWN</button></a>
+    {{#if user}}
+    <div>Welcome {{user.username}}!</div>
+    {{else}}
     <a href="../sign-up">Signup</a>
     <a href="../login">Login</a>
+    {{/if}}
   <div class="container">
     {{{body}}}
   </div>
