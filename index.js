@@ -56,6 +56,11 @@ app.use(bodyParser.json());
 var show = require('./routes/shows');
 app.use('/shows', show);
 
+var options={};
+var auth = require('./routes/auth')(app, options);
+auth.init(); //setup middleware
+auth.registerRoutes();
+
 
 //accesses src files in public folder (e.g. could be css, images)
 app.use(express.static('public'));
@@ -64,3 +69,6 @@ app.use(express.static('public'));
 app.listen(portNum, function() {
   console.log('listening on port ', portNum);
 });
+
+
+

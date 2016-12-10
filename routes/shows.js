@@ -13,11 +13,14 @@ var uploadPath = path.join(__dirname, '../public/uploads');
 //puts stuff getting uploaded in public folder
 var upload = multer({ dest: uploadPath});
 var Show = require('../models/show');
+var show = new Show;
 var User = require('../models/user');
-passport.use(new LocalStrategy(User.authenticate()));
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+
+router.use(function(req, res, next){
+    res.locals.user = req.user;
+    next();
+})
 
 //when you go to 'shows/add', it renders new-show.handlebars view
 router.get('/add', function(req, res){
@@ -69,8 +72,10 @@ router.get('/login', function(req,res){
     res.render('login')
 });
 
-router.post('/login', passport.authenticate('local'), function(req, res, next){
-    res.send('Welcome back ' + req.body.name);
+router.post('/login', 
+        passport.authenticate('local'), 
+            function(req, res, next){
+    res.send('Welcome back ' + req.body.username);
 });
 
 
@@ -104,6 +109,24 @@ router.get('/:show_name', function(req, res){
         //res.send(pageData);
         res.render('show-slug', pageData);
     });
+});
+
+router.post('/:show_name', function(req, res){
+    Show.findOne({slug: req.params.show_name}, function(err,show){
+    show.comments.push({ 
+        text: req.body.text 
+    });
+var subdoc = show.comments[0];
+//subdoc successfully logs in
+    console.log(subdoc); 
+    console.log(req.body.text);
+    subdoc.isNew; // true
+    show.save(function (err) {
+        if (err) return handleError(err)
+        console.log('Success!');
+        res.redirect('/shows/' + req.params.show_name);   
+    }); 
+    })
 });
 
 

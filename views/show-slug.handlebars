@@ -12,6 +12,15 @@
         {{description}}
     </div>
 </div>
+<!--WHAT IS THE FORM ACTION-->
+<div id="comments" class="col-md-6">
+{{#each comments}}
+This should be a comment: {{text}}
+    </div>
 {{/each}}
-
+<form action="/shows/{{slug}}" method="post">
+<textarea type="text" name="text" class="form-control" rows="4"></textarea>
+    <input type="submit">
+</form>
+{{/each}}
 
