@@ -1,11 +1,3 @@
-<script>
-    var options = {
-    valueNames: ['comedy', 'drama', 'indie', 'action', 'mystery', 'sci-fi', 'romance', 'documentary', 'horror']
-};
-
-var showList = new List('showSort', options);
-</script>
-
 <div class="container" id="buttons">
         <!-- Button trigger modal (Template from Bootstrap)-->
     <button data-toggle="modal" data-target="#myModal"><b>Need Help Filtering?</b></button>
@@ -27,18 +19,17 @@ var showList = new List('showSort', options);
   </div>
 </div>
 <button class="sort" data-sort="comedy">COMEDY</button>
-<button class="filter" data-filter=".comedy">Comedy</button>
-<button class="filter" data-filter=".drama">Drama</button>
-<button class="filter" data-filter=".indie">Indie</button>
-<button class="filter" data-filter=".action">Action</button>
-<button class="filter" data-filter=".mystery">Mystery</button>
-<button class="filter" data-filter=".sci-fi">Sci-Fi</button>
-<button class="filter" data-filter=".romance">Romance</button>
-<button class="filter" data-filter=".documentary">Documentary</button>
-<button class="filter" data-filter=".horror">Horror</button>
+<button class="sort" data-sort="drama">DRAMA</button>
+<button class="sort" data-sort="indie">INDIE</button>
+<button class="sort" data-sort="action">ACTION</button>
+<button class="sort" data-sort="mystery">MYSTERY</button>
+<button class="sort" data-sort="sci-fi">SCI-FI</button>
+<button class="sort" data-sort="romance">ROMANCE</button>
+<button class="sort" data-sort="documentary">DOCUMENTARY</button>
+<button class="sort" data-sort="horror">HORROR</button>
 </div>
 <!--<div id="Container">-->
-<div id="showSort">
+<div id="list">
 {{#each shows}}
 <a href="shows/{{slug}}"><div class="{{genre}} show col-md-4">
         {{#if imageFilename}}
@@ -55,7 +46,14 @@ var showList = new List('showSort', options);
 </div>
 
 <a href="#top" id="topbutton">back to top</a>
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.3.0/list.min.js"></script>
+<script type="text/javascript">
+    var options = {
+    valueNames: ['comedy', 'drama', 'indie', 'action', 'mystery', 'sci-fi', 'romance', 'documentary', 'horror']
+};
 
+var list = new List('showSort', options);
+</script>
 <!--Sorting-->
 <!--
 <script>

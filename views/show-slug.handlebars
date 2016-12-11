@@ -17,15 +17,28 @@
 {{#each comments}}
 This should be a comment: {{text}}
 Posted on: {{posted}}
-By: User
+By: {{user.username}}
 {{/each}}
 </div>
-<form action="/shows/{{slug}}" method="post">
-<textarea type="text" name="text" class="form-control" rows="4"></textarea>
-    <input type="submit">
-</form>
+
+{{#if user}}
+    <form action="/shows/{{slug}}" method="post">
+        <fieldset enabled>
+       <textarea type="text" name="text" class="form-control" rows="4"></textarea>
+       <input type="submit">
+        </fieldset>
+    </form>
+{{else}}
+    <form action="/shows/{{slug}}" method="post">
+        <fieldset disabled>
+       <textarea type="text" name="text" class="form-control" rows="4">You must be logged in to comment!</textarea>
+       <input type="submit">
+        </fieldset>
+    </form>
+{{/if}}
+
 </div>
+
 {{/each}}
 
-<!--Make an if statement: you must be logged in to comment! -->
-<!--Button to delete comment as well :( -->
+<!--Button to delete comment as well -->

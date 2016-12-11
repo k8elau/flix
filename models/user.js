@@ -2,7 +2,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 
-var User = new Schema({});
+var User = new Schema({
+    role:String
+});
 
 //plugin adds username, hash and salt for password
 User.plugin(passportLocalMongoose); 

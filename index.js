@@ -22,12 +22,18 @@ npm install dotenv --save *for loading the .env file which holds the database*
 var express = require('express');
 var hbs = require('express-handlebars');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var Mongoose = require('mongoose');
+var session = require('express-session');
+//using mongo to store data persistence problem
+//mongo will create "sessions" collections automatically 
+var MongoStore = require('connect-mongo')(session);
 //var listjs = require('list.js');
 var app = express();
-
 //requires to .env file and letting website know that we need it
 require('dotenv').config();
+
+app.use(cookieParser());
 
 //Mongoose connecting to database, mongoDB helping out too
 Mongoose.connect(process.env.DB_URL);
@@ -45,6 +51,24 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
+
+
+// prevent people from tampering with cookies
+//set cookieSecret in .env
+//app.use(cookieParser(process.env.cookieSecret));
+app.use(session({
+    secret: process.env.cookieSecret,
+    cookie: {
+        httpOnly:true,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    },
+    saveUninitialized: true,
+    //add session store
+    store: new MongoStore({
+        url: process.env.DB_URL
+    })
+}
+));
 
 //when user visits "/shows", refer to .routes/shows
 var options={};
