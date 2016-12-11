@@ -18,7 +18,7 @@ var showSchema = new Schema({
   description: String,
   imageFilename: String,
   comments: [commentSchema],
-    favorites: Number
+  favorites: Number
 });
 
 //slugifies weird names (for example, ones with spaces in between them)

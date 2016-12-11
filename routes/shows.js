@@ -13,20 +13,12 @@ var uploadPath = path.join(__dirname, '../public/uploads');
 //puts stuff getting uploaded in public folder
 var upload = multer({ dest: uploadPath});
 var Show = require('../models/show');
-var show = new Show;
 var User = require('../models/user');
+//var listjs = require('list.js');
 
-
-router.use(function(req, res, next){
-    res.locals.user = req.user;
-    next();
-})
-
-//when you go to 'shows/add', it renders new-show.handlebars view
 router.get('/add', function(req, res){
     res.render('new-show');
 });
-
 
 //if you're posting something on the /add (aka pressing submit button), this thing happens
 router.post('/add', upload.single('image'), function(req,res){
@@ -51,34 +43,6 @@ router.post('/add', upload.single('image'), function(req,res){
 });
 
 
-router.get('/sign-up', function(req,res){
-    res.render('sign-up')
-});
-
-router.post('/sign-up', function(req,res){
-    var newUser = new User({
-        username: req.body.username
-    })
-    User.register(newUser, req.body.password, function(err, user){
-        console.log('signup error:', err);
-    });
-    passport.authenticate('local')(req, res, function(){
-        res.send('Welcome ' + req.body.name);
-    })
-});
-
-
-router.get('/login', function(req,res){
-    res.render('login')
-});
-
-router.post('/login', 
-        passport.authenticate('local'), 
-            function(req, res, next){
-    res.send('Welcome back ' + req.body.username);
-});
-
-
 //this is what the main page of the website would be 
 router.get('/', function(req, res){
     var query = {};
@@ -98,7 +62,7 @@ router.get('/', function(req, res){
 });
 
 
- //http://localhost:8888/shows?genre=comedy&genre=drama gets shows that are BOTH comedy and drama, while http://localhost:8888/shows?genre=comedy&drama gets shows that are comedy, or drama, or both.
+//http://localhost:8888/shows?genre=comedy&genre=drama gets shows that are BOTH comedy and drama, while http://localhost:8888/shows?genre=comedy&drama gets shows that are comedy, or drama, or both.
 //this would be an individual show info page, because all shows have different slugs
 router.get('/:show_name', function(req, res){
     Show.findOne({slug: req.params.show_name}, function(err, data){

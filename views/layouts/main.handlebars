@@ -11,18 +11,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.3.0/list.min.js"></script>
     <link rel="stylesheet" href="/css/main.css">
-	<!-- what's the difference between NAME AND ID -->
-   <!-- <input type="number" name="year_released" min="1950" max="2016" id="show_name"> -->
 </head>
 
 <body>
-<!--    move header to partial?-->
     <a name="top"></a>
     <a href="../shows"><img src="/img/logo.png" alt="LOGO" id="logo"></a>
     <a href="../shows/add"><button id="submit">SUBMIT YOUR OWN</button></a>
     {{#if user}}
-    <div>Welcome {{user.username}}!</div>
+    <span>Welcome {{user.username}}!</span>
+    <a href="/logout">Logout</a>
     {{else}}
     <a href="../sign-up">Signup</a>
     <a href="../login">Login</a>

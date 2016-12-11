@@ -23,7 +23,7 @@ var express = require('express');
 var hbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var Mongoose = require('mongoose');
-
+//var listjs = require('list.js');
 var app = express();
 
 //requires to .env file and letting website know that we need it
@@ -47,14 +47,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //when user visits "/shows", refer to .routes/shows
-
-var show = require('./routes/shows');
-app.use('/shows', show);
-
 var options={};
 var auth = require('./routes/auth')(app, options);
 auth.init(); //setup middleware
 auth.registerRoutes();
+
+var show = require('./routes/shows');
+app.use('/shows', show);
 
 
 //accesses src files in public folder (e.g. could be css, images)

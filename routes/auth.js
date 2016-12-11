@@ -28,9 +28,9 @@ module.exports = function(app, options){
         },
         
         registerRoutes:function(){
-        app.get('/sign-up', function(req,res){
-    res.render('sign-up');
-});
+            app.get('/sign-up', function(req,res){
+            res.render('sign-up');
+        });
 
 app.post('/sign-up', function(req, res, next){
     var newUser = new User({

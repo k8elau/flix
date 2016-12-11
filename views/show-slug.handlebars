@@ -12,14 +12,20 @@
         {{description}}
     </div>
 </div>
-<div id="comments" class="col-md-6">
+<div id="wrapper">
+<div id="comments" class="col-md-8">
 {{#each comments}}
 This should be a comment: {{text}}
-    </div>
+Posted on: {{posted}}
+By: User
 {{/each}}
+</div>
 <form action="/shows/{{slug}}" method="post">
 <textarea type="text" name="text" class="form-control" rows="4"></textarea>
     <input type="submit">
 </form>
+</div>
 {{/each}}
 
+<!--Make an if statement: you must be logged in to comment! -->
+<!--Button to delete comment as well :( -->
