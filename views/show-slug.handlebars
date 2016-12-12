@@ -1,4 +1,8 @@
 <a href="../shows">Back</a>
+
+
+<button id="favorite" onclick="favorite()">Favorite!</button>
+
 {{#each shows}}
     <div id="wrapper">
     <div id="show_slug" class="col-md-4">
@@ -12,7 +16,7 @@
         {{description}}
     </div>
 </div>
-<div id="wrapper">
+
 <div id="comments" class="col-md-8">
 {{#each comments}}
 This should be a comment: {{text}}
@@ -37,8 +41,13 @@ By: {{user.username}}
     </form>
 {{/if}}
 
-</div>
 
 {{/each}}
 
-<!--Button to delete comment as well -->
+<!--Button to delete comment as well, let users favorite on this page instead (do findOne function in routes and then increment favorites by one!) -->
+
+<script>
+function favorite() {
+    {{favorites}}++;
+}
+</script>

@@ -27,7 +27,8 @@ router.post('/add', upload.single('image'), function(req,res){
       genre: req.body.genre,
       year_released: req.body.year_released,
       imageFilename:req.file.filename,
-      description:req.body.description
+      description:req.body.description,
+      favorites:0
    }); 
    
     show.save(function(err, data){
@@ -61,6 +62,10 @@ router.get('/', function(req, res){
     });
 });
 
+router.put('/', function(req, res){
+    
+    
+});
 
 //http://localhost:8888/shows?genre=comedy&genre=drama gets shows that are BOTH comedy and drama, while http://localhost:8888/shows?genre=comedy&drama gets shows that are comedy, or drama, or both.
 //this would be an individual show info page, because all shows have different slugs
@@ -92,6 +97,5 @@ var subdoc = show.comments[0];
     }); 
     })
 });
-
 
 module.exports = router;
