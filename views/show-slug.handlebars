@@ -1,7 +1,10 @@
 <a href="../shows">Back</a>
 
-
+{{#if user}}
 <button id="favorite" onclick="favorite()">Favorite!</button>
+{{else}}
+<button id="favorite" disabled>You must be logged in to favorite!</button>
+{{/if}}
 
 {{#each shows}}
     <div id="wrapper">
@@ -18,36 +21,49 @@
 </div>
 
 <div id="comments" class="col-md-8">
-{{#each comments}}
-This should be a comment: {{text}}
-Posted on: {{posted}}
-By: {{user.username}}
-{{/each}}
-</div>
 
 {{#if user}}
+    {{#each comments}}
+    {{user.username}}
+    This should be a comment: {{text}}
+    Posted on: {{posted}}
+    {{/each}}
+{{else}}
+    {{#each comments}}
+    This should be a comment: {{text}}
+    Posted on: {{posted}}
+    {{/each}}
+{{/if}}
+    
+</div>
+
+{{/each}}
+
+{{#if user}}
+    {{#each shows}}
     <form action="/shows/{{slug}}" method="post">
         <fieldset enabled>
        <textarea type="text" name="text" class="form-control" rows="4"></textarea>
        <input type="submit">
         </fieldset>
     </form>
+    {{/each}}
 {{else}}
+ {{#each shows}}
     <form action="/shows/{{slug}}" method="post">
         <fieldset disabled>
        <textarea type="text" name="text" class="form-control" rows="4">You must be logged in to comment!</textarea>
        <input type="submit">
         </fieldset>
     </form>
+ {{/each}}
 {{/if}}
-
-
-{{/each}}
-
 <!--Button to delete comment as well, let users favorite on this page instead (do findOne function in routes and then increment favorites by one!) -->
 
 <script>
 function favorite() {
-    {{favorites}}++;
+    //ajax request
+    //api/shows/slug/favorite(?)
+    console.log("Hello World");
 }
 </script>

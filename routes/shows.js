@@ -62,9 +62,12 @@ router.get('/', function(req, res){
     });
 });
 
+//so url matches api/shows/slug/favorite or whatever
 router.put('/', function(req, res){
     
-    
+    //find the favorite
+    show.favorites++;
+    //show.save
 });
 
 //http://localhost:8888/shows?genre=comedy&genre=drama gets shows that are BOTH comedy and drama, while http://localhost:8888/shows?genre=comedy&drama gets shows that are comedy, or drama, or both.
