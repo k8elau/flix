@@ -62,13 +62,6 @@ router.get('/', function(req, res){
     });
 });
 
-//so url matches api/shows/slug/favorite or whatever
-router.put('/', function(req, res){
-    
-    //find the favorite
-    show.favorites++;
-    //show.save
-});
 
 //http://localhost:8888/shows?genre=comedy&genre=drama gets shows that are BOTH comedy and drama, while http://localhost:8888/shows?genre=comedy&drama gets shows that are comedy, or drama, or both.
 //this would be an individual show info page, because all shows have different slugs
@@ -88,7 +81,7 @@ router.post('/:show_name', function(req, res){
     show.comments.push({ 
         text: req.body.text 
     });
-var subdoc = show.comments[0];
+    var subdoc = show.comments[0];
 //subdoc successfully logs in
     console.log(subdoc); 
     console.log(req.body.text);
@@ -100,5 +93,34 @@ var subdoc = show.comments[0];
     }); 
     })
 });
+
+//url should match what is in ajax
+router.put('/:show_name', function(req, res){
+    Show.findOne({
+        slug: req.params.show_name
+    },
+    function(err, show){
+        show.favorites++;
+    })
+    show.save(function (err){
+        if(err) return handleError(err)
+        console.log('Success!');
+        res.redireect('/shows/' + req.params.show_name);
+    });
+});
+
+router.delete('/:show_name', function(req, res){
+    Show.findOne({
+        slug: req.params.show_name
+    },
+    function(err, show){
+        show.comments.id(_id).remove();
+    })
+    show.save(function(err){
+        if (err) return handleError(err)
+        console.log('Success!');
+        res.redirect('/shows/' + req.params.show_name);   
+    })
+})
 
 module.exports = router;

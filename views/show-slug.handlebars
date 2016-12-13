@@ -1,5 +1,4 @@
 <a href="../shows">Back</a>
-
 {{#if user}}
 <button id="favorite" onclick="favorite()">Favorite!</button>
 {{else}}
@@ -21,23 +20,26 @@
 </div>
 
 <div id="comments" class="col-md-8">
-
+<h3>Comments</h3>
 {{#if user}}
     {{#each comments}}
+    <ul></ul>
     {{user.username}}
     This should be a comment: {{text}}
     Posted on: {{posted}}
     {{/each}}
 {{else}}
     {{#each comments}}
+    <ul></ul>
+    <button onclick="deleteIt()"><img src="/img/delete.png" height="15px" width="15px"></button>
     This should be a comment: {{text}}
     Posted on: {{posted}}
     {{/each}}
 {{/if}}
     
 </div>
-
 {{/each}}
+
 
 {{#if user}}
     {{#each shows}}
@@ -62,8 +64,38 @@
 
 <script>
 function favorite() {
-    //ajax request
-    //api/shows/slug/favorite(?)
-    console.log("Hello World");
+     //make sure url matches route
+   $.ajax({
+    type: 'put',
+    url: '/shows/:show_name',
+    data: {
+     name: 'shows'
+    }
+   })
+    .done(function(data) {
+     console.log('updated favorites', data);
+    })
+    .fail(function(err) {
+     console.log('failed to update favorites');
+    });
 }
+
+    
+function deleteIt(){
+    console.log('i am here');
+    $.ajax({
+        type:'delete',
+        url:'/shows/:show_name',
+        data:{
+          name: 'shows'
+        } 
+    })
+    .done(function(data){
+        console.log('deleted', data);
+    })
+    .fail(function(err){
+        console.log('was not deleted successfully', data);
+    });
+}
+    
 </script>
