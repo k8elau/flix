@@ -1,0 +1,144 @@
+/*
+    #011638: Black
+    #BC1C31: Red
+    #FFF8E8: Marshmallow
+    #CDCDCD: Grey
+*/
+
+h1, h2, h3{
+    font-family: 'Hind', sans-serif;
+}
+
+p{
+    font-family: 'Lato', sans-serif;
+}
+
+body{
+    background-color: #FFF8E8;
+}
+
+a{
+    color: #BC1C31;
+}
+
+li{
+    list-style-type:none;
+}
+#logo{
+    width:209px;
+    height:98px;
+    margin-left:5px;
+    margin-top:5px;
+    padding: 2px;
+    transition: all 1.5s ease-in-out;
+}
+
+#logo:hover{
+    transform: scale(1.2);
+}
+
+#buttons{
+    text-align:center;
+    padding-bottom:5px;
+}
+
+/*Each individual show*/
+.show{
+    padding-top:10px;
+    position:relative;
+    text-align:center;
+    padding-bottom: 15px;
+}
+
+/*BOOTSTRAP'S primary buttons*/
+.btn.btn-primary{
+    background-color: #BC1C31;
+    border-color: #FFF8E8;
+}
+
+/*Activated Bootstrap Button*/
+.btn-primary.active{
+    background-color:black;
+}
+
+/*What shows up when hovvering over*/
+.imageDescription{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background: rgba(255, 255, 255, .9);
+    color: black;
+    visibility: hidden;
+    opacity:0;
+    font-family: Helvetica;
+    text-transform:uppercase;
+    font-size:30px;
+    padding-top:50%;
+    vertical-align: middle;
+}
+
+/*Hovering over show*/
+.show:hover .imageDescription{
+    visibility:visible;
+    opacity:1;
+}
+
+#wrapper{
+    width: auto;
+    border: 1px solid black;
+    border-radius: 25px;
+    overflow:hidden;
+    padding: 8px;
+}
+
+#show_slug{
+    float:left;
+}
+
+#showname{
+    font-size:2vw;
+}
+#description{
+    padding-top:35px;
+    float: left;
+    display:inline-block;
+    font-size: 1.5vw;
+    font-family: 'Lato', sans-serif;
+}
+
+#topbutton{
+    position: fixed;
+    text-decoration-style:wavy;
+    bottom:8px;
+    left:10px;
+    padding-left:5px;
+}
+
+#modal{
+    display:inline-block;
+    float:left;
+    position:absolute;
+    margin-left:8%
+}
+
+#signup{
+    right:50px;
+}
+
+#favorite{
+    position:absolute;
+    top:13%;
+    right:5%;
+}
+
+#login{
+    position: absolute;
+    top:5%;
+    right:5%;
+}
+
+#comments{
+    margin-top:30px;
+}
