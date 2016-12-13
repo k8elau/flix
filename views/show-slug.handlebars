@@ -68,7 +68,7 @@ function favorite() {
     type: 'put',
     url: '/shows/:show_name',
     data: {
-     name: shows
+     show: 'favorites'
     }
    })
     .done(function(data) {
@@ -85,7 +85,7 @@ function deleteIt(){
         type:'delete',
         url:'/shows/:show_name',
         data:{
-          name: shows
+          show: comments
         } 
     })
     .done(function(data){

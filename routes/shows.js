@@ -77,7 +77,10 @@ router.get('/:show_name', function(req, res){
 });
 
 router.post('/:show_name', function(req, res){
-    Show.findOne({slug: req.params.show_name}, function(err,show){
+    Show.findOne({
+        slug: req.params.show_name
+    }, 
+    function(err,show){
     show.comments.push({ 
         text: req.body.text 
     });
@@ -101,12 +104,12 @@ router.put('/:show_name', function(req, res){
     },
     function(err, show){
         show.favorites++;
-    })
-    show.save(function (err){
-        if(err) return handleError(err)
-        console.log('Success!');
-        res.redireect('/shows/' + req.params.show_name);
-    });
+        show.save(function(err){
+            if(err) return handleError(err)
+            console.log('Success!');
+            res.redirect('/shows/' + req.params.show_name);
+        })
+    })   
 });
 
 router.delete('/:show_name', function(req, res){
@@ -115,12 +118,12 @@ router.delete('/:show_name', function(req, res){
     },
     function(err, show){
         show.comments.id(_id).remove();
-    })
-    show.save(function(err){
+        show.save(function(err){
         if (err) return handleError(err)
         console.log('Success!');
         res.redirect('/shows/' + req.params.show_name);   
     })
-})
+    })
+});
 
 module.exports = router;
