@@ -34,6 +34,7 @@ module.exports = function(app, options){
 
 app.post('/sign-up', function(req, res, next){
     var newUser = new User({
+        name: req.body.name,
         username: req.body.username
     });
     
