@@ -21,7 +21,8 @@
 
 <div class="col-md-8">
 <h3>Comments</h3>
-{{#if user}}
+<!--    not recognizing logged in user -->
+{{#if user}} 
     {{#each comments}}
     <ul></ul>
     {{user.username}}
@@ -33,7 +34,7 @@
     <ul></ul>
     <button onclick="deleteIt()"><img src="/img/delete.png" height="15px" width="15px"></button>
     Username: {{text}}
-    {{/each}}
+{{/each}}
 {{/if}}
     
 </div>
@@ -62,17 +63,19 @@
 <!--Button to delete comment as well, let users favorite on this page instead (do findOne function in routes and then increment favorites by one!) -->
 
 <script>
+ {{#each shows}}
 function favorite() {
      //make sure url matches route
    $.ajax({
     type: 'put',
-    url: '/shows/:show_name',
+    url: '/shows/{{slug}}',
     data: {
-     show: 'favorites'
+     shows: 'slug'
     }
    })
     .done(function(data) {
      console.log('updated favorites', data);
+     alert('the show has been favorited!');
     })
     .fail(function(err) {
      console.log('failed to update favorites');
@@ -83,9 +86,9 @@ function favorite() {
 function deleteIt(){
     $.ajax({
         type:'delete',
-        url:'/shows/:show_name',
+        url:'/shows/{{slug}}',
         data:{
-          show: comments
+          shows: 'slug'
         } 
     })
     .done(function(data){
@@ -96,4 +99,5 @@ function deleteIt(){
     });
 }
     
+{{/each}}
 </script>

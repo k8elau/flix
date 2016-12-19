@@ -107,7 +107,7 @@ router.put('/:show_name', function(req, res){
         show.save(function(err){
             if(err) return handleError(err)
             console.log('Success!');
-            res.redirect('/shows/' + req.params.show_name);
+            res.json({msg: "success"});
         })
     })   
 });
@@ -122,7 +122,7 @@ router.delete('/:show_name', function(req, res){
         if (err) return handleError(err)
         console.log('Success!');
         res.redirect('/shows/' + req.params.show_name);   
-    })
+        })
     })
 });
 
